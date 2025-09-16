@@ -5,7 +5,7 @@
 #  Initialize the 'newDict' variable with one key called "key"
 #  that has a value which is a string called "value", it should look like:
 #  {
-#	"key": "value"
+# 	"key": "value"
 #  }
 #
 ###################### YOUR CODE BELOW THIS LINE #######################
@@ -15,7 +15,6 @@ newDict = {
 }
 
 ########################################################################
-
 
 
 ########################################################################
@@ -43,13 +42,17 @@ getMyAge = {
 import datetime
 #
 ###################### YOUR CODE BELOW THIS LINE #######################
+dateOfBirth = datetime.datetime(
+    getMyAge["DOB"]["year"], getMyAge["DOB"]["month"], getMyAge["DOB"]["day"]
+)
+currentDate = datetime.datetime.now()
+delta = currentDate - dateOfBirth
 
-ageInDays = None
-ageInMonths = None
-ageInYears = None
+ageInDays = delta.days
+ageInMonths = ageInDays/12
+ageInYears = ageInDays/365
 
 ########################################################################
-
 
 
 ########################################################################
@@ -79,10 +82,11 @@ import copy
 #
 ###################### YOUR CODE BELOW THIS LINE #######################
 
-deepDictionaryCopy = None
+deepDictionaryCopy = copy.deepcopy(deepDictionary)
+deepDictionaryCopy["name"]= 'Kravis Lott'
+deepDictionaryCopy["siblings"].pop()
 
 ########################################################################
-
 
 
 ########################################################################
@@ -108,26 +112,27 @@ student = {
 #  - Their GPA has dropped by 0.15 points
 #  - They have taken a new course: MATH 204
 #  - They got their first absence, add a new key called "absences" to
-#	their record with a value of 1
+# 	their record with a value of 1
 #
 #  Ignore the student copy dictionary below, it is used to check you work
 studentCopy = dict(student)
 #
 ###################### YOUR CODE BELOW THIS LINE #######################
-
+student["grade"] += 1
+student["gpa"] -= 0.15
+student["courses"].append({'subject':"MATH", "level" : 204})
+student["absences"] = 1
 
 
 ########################################################################
-
 
 
 # ##################### END OF DICTIONARY EXERCISES ######################
 
 
-
 ########################################################################
 #
-#							   ANSWERS
+# 							   ANSWERS
 #
 #  DO NOT LOOK AT THIS SECTION UNTIL YOU HAVE FINISHED THE EXERCISES
 #
@@ -265,4 +270,3 @@ if passedTests == totalTests:
 	print(setGreen + "You passed " + str(passedTests) + " / " + str(totalTests) + " tests. Congratulations!" + resetColor)
 else:
 	print(setRed + "You passed " + str(passedTests) + " / " + str(totalTests) + " tests. Keep Going!" + resetColor)
-
